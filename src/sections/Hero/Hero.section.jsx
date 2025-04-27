@@ -1,8 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import HERO_IMAGE from "../../assets/hero-image.png";
 
 const Hero = () => {
-  const handleCTA = () => {};
+  const navigate = useNavigate();
+  const handleCTA = () => {
+    if (!user) {
+      setOpenAuthModal(true);
+    } else {
+      navigate("/dashboard")
+    }
+  }
   return (
     <>
       <div className="w-full md:w-1/2 pr-4 mb-8 md:mb-0">
