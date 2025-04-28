@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Input from "../../components/Inputs/Input.component";
-import { validateEmail, validatePassword } from "../../utils/helper.util";
 import ProfilePhotoSelector from "../../components/Inputs/ProfilePhotoSelector.component";
+import { UserContext } from "../../context/userContext";
+import { API_PATHS } from "../../utils/apiPath.util";
+import axiosInstance from "../../utils/axiosInstance.util";
+import { validateEmail, validatePassword } from "../../utils/helper.util";
+import uploadImage from "../../utils/uploadImage.util";
 
 const SignUp = ({ setCurrentPage }) => {
   const [profilePic, setProfilePic] = useState(null);
@@ -11,6 +15,7 @@ const SignUp = ({ setCurrentPage }) => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
+  const { updateUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {
@@ -38,6 +43,25 @@ const SignUp = ({ setCurrentPage }) => {
     setError("");
 
     try {
+      if (profilePic) {
+        const imageUploadResponse = await uploadImage(profilePic);
+        profileImageUrl = imageUploadResponse.imageUrl || "";
+      }
+
+      const response = await axiosInstance.post(API_PATHS.AUTH.REGISTER, {
+        name: fullName,
+        email,
+        password,
+        profileImageUrl,
+      });
+
+      const { token } = response.data;
+
+      if (token) {
+        localStorage.setItem("token", token);
+        updateUser(response.data);
+        navigate("/dashboard");
+      }
     } catch (e) {
       setError(
         "Something went wrong. Please double-check your info and try again."
@@ -55,10 +79,7 @@ const SignUp = ({ setCurrentPage }) => {
       </p>
 
       <form onSubmit={handleSignup}>
-        <ProfilePhotoSelector 
-          image={profilePic}
-          setImage={setProfilePic}
-        />
+        <ProfilePhotoSelector image={profilePic} setImage={setProfilePic} />
         <div className="grid grid-cols-1 md:grid-cols-1 gap-2">
           <Input
             value={fullName}
