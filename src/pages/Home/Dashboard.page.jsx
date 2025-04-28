@@ -6,6 +6,8 @@ import ResumeSummaryCard from "../../components/Cards/ResumeSummaryCard.componen
 import DashboardLayout from "../../components/Layouts/DashboardLayout.component";
 import { API_PATHS } from "../../utils/apiPath.util";
 import axiosInstance from "../../utils/axiosInstance.util";
+import Modal from "../../components/Modals/Modal.component";
+import CreateResumeForm from "../../components/Forms/CreateResumeForm.component";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -53,6 +55,15 @@ const Dashboard = () => {
           />
         ))}
       </div>
+      <Modal
+        isOpen={openCreateModal}
+        onClose={() => setOpenCreateModal(false)}
+        hideHeader
+      >
+        <div className="">
+          <CreateResumeForm />
+        </div>
+      </Modal>
     </DashboardLayout>
   );
 };
