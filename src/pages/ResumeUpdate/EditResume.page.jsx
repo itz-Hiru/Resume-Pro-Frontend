@@ -14,6 +14,9 @@ import DashboardLayout from "../../components/Layouts/DashboardLayout.component"
 import TitleInput from "../../components/Inputs/TitleInput.component";
 import axiosInstance from "../../utils/axiosInstance.util";
 import { API_PATHS } from "../../utils/apiPath.util";
+import StepProgress from "../../components/Progress/StepProgress.component";
+import ProfileInfoForm from "../../components/Forms/ProfileInfoForm.component";
+import ContactInfoForm from "../../components/Forms/ContactInfoForm.component";
 
 const EditResume = () => {
   const { resumeId } = useParams();
@@ -25,7 +28,7 @@ const EditResume = () => {
   const [baseWidth, setBaseWidth] = useState(800);
   const [openThemeSelector, setOpenThemeSelector] = useState(false);
   const [openPreviewModal, setOpenPreviewModal] = useState(false);
-  const [currentPage, setCurrentPage] = useState("profile-info");
+  const [currentPage, setCurrentPage] = useState("contact-info");
   const [progress, setProgress] = useState(0);
   const [resumeData, setResumeData] = useState({
     title: "",
@@ -107,10 +110,40 @@ const EditResume = () => {
   // Function to navigate to previous page
   const goToPrevPage = () => {};
 
-  const renderForm = () => {};
+  const renderForm = () => {
+    switch (currentPage) {
+      case "profile-info":
+        return (
+          <ProfileInfoForm
+            profileData={resumeData?.profileInfo}
+            updateSection={(key, value) => {
+              updateSection("profileInfo", key, value);
+            }}
+            onNext={validateAndNext}
+          />
+        );
+      case "contact-info":
+        return (
+          <ContactInfoForm
+            contactInfo={resumeData?.contactInfo}
+            updateSection={(key, value) => {
+              updateSection("contactInfo", key, value);
+            }}
+          />
+        );
+    }
+  };
 
   // Update simple nested objects (like profile info, contact etc.)
-  const updateSection = (section, key, value) => {};
+  const updateSection = (section, key, value) => {
+    setResumeData((prev) => ({
+      ...prev,
+      [section]: {
+        ...prev[section],
+        [key]: value,
+      },
+    }));
+  };
 
   // Update array items (like work experience, skills etc.)
   const updateArrayItem = (section, index, key, value) => {};
@@ -216,8 +249,54 @@ const EditResume = () => {
             </button>
           </div>
         </div>
-        <div className="">
-          <div className=""></div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="bg-white rounded-lg border border-purple-100 overflow-hidden">
+            <StepProgress progress={progress} />
+            {renderForm()}
+            <div className="mx-5">
+              {errorMsg && (
+                <div className="flex items-center gap-2 text-[11px] font-medium text-amber-600 bg-amber-100 px-2 py-0.5 my-1 rounded">
+                  <LuCircleAlert className="text-base" /> {errorMsg}
+                </div>
+              )}
+              <div className="flex items-center justify-end gap-3 mb-5">
+                <button
+                  className="btn-small-light"
+                  onClick={goToPrevPage}
+                  disabled={isLoading}
+                >
+                  <LuArrowLeft className="text-[16px]" />
+                  Back
+                </button>
+                <button
+                  className="btn-small-light-download"
+                  onClick={uploadResumeImage}
+                  disabled={isLoading}
+                >
+                  <LuSave className="text-[16px]" />
+                  {isLoading ? "Updating..." : "Save & Exit"}
+                </button>
+                <button
+                  className="btn-small"
+                  onClick={validateAndNext}
+                  disabled={isLoading}
+                >
+                  {currentPage === "additionalInfo" && (
+                    <LuDownload className="text-[16px]" />
+                  )}
+                  {currentPage === "additionalInfo"
+                    ? "Preview & Download"
+                    : "Next"}
+                  {currentPage !== "additionalInfo" && (
+                    <LuArrowLeft className="text-[16px] rotate-180" />
+                  )}
+                </button>
+              </div>
+            </div>
+          </div>
+          <div ref={resumeRef} className="h-[100vh]">
+            {/* Resume Template */}
+          </div>
         </div>
       </div>
     </DashboardLayout>
