@@ -34,7 +34,7 @@ const EditResume = () => {
   const [baseWidth, setBaseWidth] = useState(800);
   const [openThemeSelector, setOpenThemeSelector] = useState(false);
   const [openPreviewModal, setOpenPreviewModal] = useState(false);
-  const [currentPage, setCurrentPage] = useState("additional-info");
+  const [currentPage, setCurrentPage] = useState("profile-info");
   const [progress, setProgress] = useState(0);
   const [resumeData, setResumeData] = useState({
     title: "",
@@ -108,13 +108,176 @@ const EditResume = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   // Validate Inputs
-  const validateAndNext = (e) => {};
+  const validateAndNext = (e) => {
+    const errors = [];
+
+    switch (currentPage) {
+      case "profile-info":
+        const { fullName, designation, summary } = resumeData.profileInfo;
+        if (!fullName.trim()) errors.push("Full name is required.");
+        if (!designation.trim()) errors.push("Designation is required");
+        if (!summary.trim()) errors.push("Summary is required");
+        break;
+
+      case "contact-info":
+        const { email, phone } = resumeData.contactInfo;
+
+        if (!email.trim()) {
+          errors.push("Email is required");
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          errors.push("Please enter a valid email");
+        }
+
+        if (!phone.trim()) {
+          errors.push("Phone number is required");
+        } else if (!/^\+?\d{10,15}$/.test(phone)) {
+          errors.push("Please enter a valid phone number");
+        }
+        break;
+
+      case "work-experience":
+        resumeData.workExperience.forEach(
+          ({ company, role, startDate, endDate }, index) => {
+            if (!company.trim())
+              errors.push(`Company is required in experience ${index + 1}`);
+            if (!role.trim())
+              errors.push(`Role is required in experience ${index + 1}`);
+            if (!startDate || endDate)
+              errors.push(
+                `Start and End dates are required in experience ${index + 1}`
+              );
+          }
+        );
+        break;
+
+      case "education-info":
+        resumeData.education.forEach(
+          ({ degree, institution, startDate, endDate }, index) => {
+            if (!degree.trim())
+              errors.push(`Degree is required in education ${index + 1}`);
+            if (!institution.trim())
+              errors.push(`Institution is required in education ${index + 1}`);
+            if (!startDate || !endDate)
+              errors.push(
+                `Start and End dates are required in education ${index + 1}`
+              );
+          }
+        );
+        break;
+
+      case "skills-info":
+        resumeData.skills.forEach(({ name, progress }, index) => {
+          if (!name.trim())
+            errors.push(`Name is required in skill ${index + 1}`);
+          if (progress < 1 || progress > 100)
+            errors.push(
+              `Skill progress must be between 1 and 5 in skill ${index + 1}`
+            );
+        });
+        break;
+
+      case "project-info":
+        resumeData.projects.forEach(({ title, description }, index) => {
+          if (!title.trim())
+            errors.push(`Title is required in project ${index + 1}`);
+          if (!description.trim())
+            errors.push(`Description is required in project ${index + 1}`);
+        });
+        break;
+
+      case "certifications-info":
+        resumeData.certifications.forEach(({ title, issuer }, index) => {
+          if (!title.trim())
+            errors.push(`Title is required in certification ${index + 1}`);
+          if (!issuer.trim())
+            errors.push(`Issuer is required in certification ${index + 1}`);
+        });
+        break;
+
+      case "additional-info":
+        if (
+          resumeData.languages.length === 0 ||
+          resumeData.languages[0].name?.trim()
+        ) {
+          errors.push("At least one language is required");
+        }
+
+        if (
+          resumeData.interests.length === 0 ||
+          resumeData.interests[0]?.trim()
+        ) {
+          errors.push("At least one interest is required");
+        }
+
+      default:
+        break;
+    }
+
+    if (errors.length > 0) {
+      setErrorMsg(errors.join(", "));
+      return;
+    }
+
+    // Move to the next page
+    setErrorMsg("");
+    goToNextPage();
+  };
 
   // Function to navigate to next page
-  const goToNextPage = () => {};
+  const goToNextPage = () => {
+    const pages = [
+      "profile-info",
+      "contact-info",
+      "work-experience",
+      "education-info",
+      "skills-info",
+      "project-info",
+      "certifications-info",
+      "additional-info",
+    ];
+
+    if (currentPage === "additional-info") setOpenPreviewModal(true);
+
+    const currentIndex = pages.indexOf(currentPage);
+
+    if (currentIndex !== -1 && currentIndex < pages.length - 1) {
+      const nextIndex = currentIndex + 1;
+      setCurrentPage(pages[nextIndex]);
+
+      // Set progress as percentage
+      const percent = Math.round((nextIndex / (pages.length - 1)) * 100);
+      setProgress(percent);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   // Function to navigate to previous page
-  const goToPrevPage = () => {};
+  const goToPrevPage = () => {
+    const pages = [
+      "profile-info",
+      "contact-info",
+      "work-experience",
+      "education-info",
+      "skills-info",
+      "project-info",
+      "certifications-info",
+      "additional-info",
+    ];
+
+    if (currentPage === "profile-info") navigate("/dashboard");
+
+    const currentIndex = pages.indexOf(currentPage);
+
+    if (currentIndex > 0) {
+      const prevIndex = currentIndex - 1;
+      setCurrentPage(pages[prevIndex]);
+
+      // Update progress bar
+      const percent = Math.round((prevIndex / (pages.length - 1)) * 100);
+      setProgress(percent);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   const renderForm = () => {
     switch (currentPage) {
@@ -216,6 +379,9 @@ const EditResume = () => {
             }
           />
         );
+
+      default:
+        null;
     }
   };
 
@@ -397,13 +563,13 @@ const EditResume = () => {
                   onClick={validateAndNext}
                   disabled={isLoading}
                 >
-                  {currentPage === "additionalInfo" && (
+                  {currentPage === "additional-info" && (
                     <LuDownload className="text-[16px]" />
                   )}
-                  {currentPage === "additionalInfo"
+                  {currentPage === "additional-info"
                     ? "Preview & Download"
                     : "Next"}
-                  {currentPage !== "additionalInfo" && (
+                  {currentPage !== "additional-info" && (
                     <LuArrowLeft className="text-[16px] rotate-180" />
                   )}
                 </button>
