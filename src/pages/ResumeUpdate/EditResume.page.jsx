@@ -23,6 +23,7 @@ import SkillsInfoForm from "../../components/Forms/SkillsInfoForm.component";
 import ProjectInfoForm from "../../components/Forms/ProjectInfoForm.component";
 import CertificationsForm from "../../components/Forms/CertificationsForm.component";
 import AdditionalInfoForm from "../../components/Forms/AdditionalInfoForm.component";
+import RenderResume from "../../components/ResumeTemplates/RenderResume.component";
 
 const EditResume = () => {
   const { resumeId } = useParams();
@@ -480,7 +481,11 @@ const EditResume = () => {
   const reactToPrintFn = useReactToPrint({ contentRef: resumeDownloadRef });
 
   // Update resume basewidth based on resume container size
-  const updateBaseWidth = () => {};
+  const updateBaseWidth = () => {
+    if (resumeRef.current) {
+      setBaseWidth(resumeRef.current.offsetWidth);
+    }
+  };
 
   useEffect(() => {
     updateBaseWidth();
@@ -578,6 +583,12 @@ const EditResume = () => {
           </div>
           <div ref={resumeRef} className="h-[100vh]">
             {/* Resume Template */}
+            <RenderResume 
+              templateId={resumeData?.template?.theme || ""}
+              resumeData={resumeData}
+              colorPalette={resumeData?.template?.colorPalette || []}
+              containerWidth={baseWidth}
+            />
           </div>
         </div>
       </div>
