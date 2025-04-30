@@ -20,6 +20,7 @@ import ContactInfoForm from "../../components/Forms/ContactInfoForm.component";
 import WorkExperienceForm from "../../components/Forms/WorkExperienceForm.component";
 import EducationInfoForm from "../../components/Forms/EducationInfoForm.component";
 import SkillsInfoForm from "../../components/Forms/SkillsInfoForm.component";
+import ProjectInfoForm from "../../components/Forms/ProjectInfoForm.component";
 
 const EditResume = () => {
   const { resumeId } = useParams();
@@ -31,7 +32,7 @@ const EditResume = () => {
   const [baseWidth, setBaseWidth] = useState(800);
   const [openThemeSelector, setOpenThemeSelector] = useState(false);
   const [openPreviewModal, setOpenPreviewModal] = useState(false);
-  const [currentPage, setCurrentPage] = useState("skills-info");
+  const [currentPage, setCurrentPage] = useState("project-info");
   const [progress, setProgress] = useState(0);
   const [resumeData, setResumeData] = useState({
     title: "",
@@ -163,7 +164,7 @@ const EditResume = () => {
 
       case "skills-info":
         return (
-          <SkillsInfoForm 
+          <SkillsInfoForm
             skillsInfo={resumeData?.skills}
             updateArrayItem={(index, key, value) => {
               updateArrayItem("skills", index, key, value);
@@ -171,7 +172,19 @@ const EditResume = () => {
             addArrayItem={(newItem) => addArrayItem("skills", newItem)}
             removeArrayItem={(index) => removeArrayItem("skills", index)}
           />
-        )
+        );
+
+      case "project-info":
+        return (
+          <ProjectInfoForm
+            projectInfo={resumeData?.projects}
+            updateArrayItem={(index, key, value) => {
+              updateArrayItem("projects", index, key, value);
+            }}
+            addArrayItem={(newItem) => addArrayItem("projects", newItem)}
+            removeArrayItem={(index) => removeArrayItem("projects", index)}
+          />
+        );
     }
   };
 
