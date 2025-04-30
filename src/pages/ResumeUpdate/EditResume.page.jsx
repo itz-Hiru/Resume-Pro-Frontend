@@ -22,6 +22,7 @@ import EducationInfoForm from "../../components/Forms/EducationInfoForm.componen
 import SkillsInfoForm from "../../components/Forms/SkillsInfoForm.component";
 import ProjectInfoForm from "../../components/Forms/ProjectInfoForm.component";
 import CertificationsForm from "../../components/Forms/CertificationsForm.component";
+import AdditionalInfoForm from "../../components/Forms/AdditionalInfoForm.component";
 
 const EditResume = () => {
   const { resumeId } = useParams();
@@ -33,7 +34,7 @@ const EditResume = () => {
   const [baseWidth, setBaseWidth] = useState(800);
   const [openThemeSelector, setOpenThemeSelector] = useState(false);
   const [openPreviewModal, setOpenPreviewModal] = useState(false);
-  const [currentPage, setCurrentPage] = useState("certifications-info");
+  const [currentPage, setCurrentPage] = useState("additional-info");
   const [progress, setProgress] = useState(0);
   const [resumeData, setResumeData] = useState({
     title: "",
@@ -197,6 +198,21 @@ const EditResume = () => {
             addArrayItem={(newItem) => addArrayItem("certifications", newItem)}
             removeArrayItem={(index) =>
               removeArrayItem("certifications", index)
+            }
+          />
+        );
+
+      case "additional-info":
+        return (
+          <AdditionalInfoForm
+            languages={resumeData?.languages}
+            interests={resumeData?.interests}
+            updateArrayItem={(section, index, key, value) =>
+              updateArrayItem(section, index, key, value)
+            }
+            addArrayItem={(section, newItem) => addArrayItem(section, newItem)}
+            removeArrayItem={(section, index) =>
+              removeArrayItem(section, index)
             }
           />
         );

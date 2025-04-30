@@ -59,8 +59,9 @@ const CertificationsForm = ({
           className="self-start flex items-center gap-2 px-4 py-2 rounded bg-green-100 text-green-800 text-sm font-semibold hover:bg-green-200 cursor-pointer"
           onClick={() =>
             addArrayItem({
-              name: "",
-              progress: 0,
+              title: "",
+              issuer: "",
+              year: "",
             })
           }
         >
