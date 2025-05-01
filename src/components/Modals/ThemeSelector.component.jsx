@@ -7,6 +7,7 @@ import {
 import { LuCircleCheckBig } from "react-icons/lu";
 import Tabs from "../Tabs/Tabs.component";
 import TemplateCard from "../Cards/TemplateCard.component";
+import RenderResume from "../ResumeTemplates/RenderResume.component";
 
 const TAB_DATA = [{ label: "Templates" }, { label: "Color Palettes" }];
 
@@ -79,15 +80,50 @@ const ThemeSelector = ({
                   }
                 />
               ))}
+            {tabValue === "Color Palettes" &&
+              themeColorPalette.themeOne.map((colors, index) => (
+                <ColorPalette
+                  key={`palette_${index}`}
+                  colors={colors}
+                  isSelected={selectedColorPalette?.index === index}
+                  onSelect={() => setSelectedColorPalette({ colors, index })}
+                />
+              ))}
           </div>
         </div>
         <div
           className="col-span-12 md:col-span-7 bg-white -mt-3"
           ref={resumeRef}
-        ></div>
+        >
+          <RenderResume
+            templateId={selectedTemplate?.theme || ""}
+            resumeData={resumeData || DUMMY_RESUME_DATA}
+            containerWidth={baseWidth}
+            colorPalette={selectedColorPalette?.colors || []}
+          />
+        </div>
       </div>
     </div>
   );
 };
 
 export default ThemeSelector;
+
+const ColorPalette = ({ colors, isSelected, onSelect }) => {
+  return (
+    <div
+      className={`h-28 bg-purple-50 flex rounded-lg overflow-hidden border-2 ${
+        isSelected ? "border-purple-500" : "border-none"
+      }`}
+    >
+      {colors.map((color, index) => (
+        <div
+          key={`color_${index}`}
+          className="flex-1"
+          style={{ backgroundColor: color }}
+          onClick={onSelect}
+        />
+      ))}
+    </div>
+  );
+};

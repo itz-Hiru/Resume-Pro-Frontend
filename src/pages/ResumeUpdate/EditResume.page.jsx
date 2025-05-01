@@ -670,8 +670,8 @@ const EditResume = () => {
             selectedTheme={resumeData?.template}
             setSelectedTheme={(value) => {
               setResumeData((prev) => ({
-                ...prevState,
-                template: value || prevState.template,
+                ...prev,
+                template: value || prev.template,
               }));
             }}
             resumeData={null}

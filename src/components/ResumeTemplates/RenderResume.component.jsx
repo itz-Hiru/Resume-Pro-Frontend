@@ -1,5 +1,7 @@
 import React from "react";
 import TemplateOne from "./Templates/TemplateOne.component";
+import TemplateTwo from "./Templates/TemplateTwo.component";
+import TemplateThree from "./Templates/TemplateThree.component";
 
 const RenderResume = ({
   templateId,
@@ -11,6 +13,24 @@ const RenderResume = ({
     case "01":
       return (
         <TemplateOne
+          resumeData={resumeData}
+          colorPalette={colorPalette}
+          containerWidth={containerWidth}
+        />
+      );
+
+    case "02":
+      return (
+        <TemplateTwo
+          resumeData={resumeData}
+          colorPalette={colorPalette}
+          containerWidth={containerWidth}
+        />
+      );
+
+    case "03":
+      return (
+        <TemplateThree
           resumeData={resumeData}
           colorPalette={colorPalette}
           containerWidth={containerWidth}
