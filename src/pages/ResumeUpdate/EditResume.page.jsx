@@ -29,6 +29,8 @@ import {
   dataURLtoFile,
   fixTailwindColors,
 } from "../../utils/helper.util";
+import Modal from "../../components/Modals/Modal.component";
+import ThemeSelector from "../../components/Modals/ThemeSelector.component";
 
 const EditResume = () => {
   const { resumeId } = useParams();
@@ -567,7 +569,7 @@ const EditResume = () => {
   }, []);
   return (
     <DashboardLayout>
-      <div className="conatiner mx-auto">
+      <div className="mx-auto container">
         <div className="flex items-center justify-between gap-5 bg-white rounded-lg border border-purple-100 py-3 px-4 mb-4">
           <TitleInput
             title={resumeData.title}
@@ -658,6 +660,25 @@ const EditResume = () => {
           </div>
         </div>
       </div>
+      <Modal 
+        isOpen={openThemeSelector}
+        onClose={() => setOpenThemeSelector(false)}
+        title="Select theme"
+      >
+        <div className="w-[90vw] h-[80vh]">
+          <ThemeSelector 
+            selectedTheme={resumeData?.template}
+            setSelectedTheme={(value) => {
+              setResumeData((prev) => ({
+                ...prevState,
+                template: value || prevState.template,
+              }));
+            }}
+            resumeData={null}
+            onClose={() => setOpenThemeSelector(false)}
+          />
+        </div>
+      </Modal>
     </DashboardLayout>
   );
 };
