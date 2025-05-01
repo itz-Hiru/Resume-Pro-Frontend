@@ -7,7 +7,7 @@ const CertificationsInfo = ({ title, issuer, year, bgColor }) => {
       <div className="flex items-center gap-2">
         {year && (
           <div
-            className="text-[11px] font-bold text-gray-800 px-33 py-0.5 inline-block mt-2 rounded-lg"
+            className="text-[11px] font-bold text-gray-800 px-3 py-0.5 inline-block mt-2 rounded-lg"
             style={{ backgroundColor: bgColor }}
           >
             {year}

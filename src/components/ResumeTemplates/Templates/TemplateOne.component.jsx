@@ -129,7 +129,7 @@ const TemplateOne = ({ resumeData, colorPalette, containerWidth }) => {
                 <EducationInfo
                   key={`education_${index}`}
                   degree={data.degree}
-                  institiution={data.institiution}
+                  institution={data.institution}
                   duration={`${formatYearMonth(
                     data.startDate
                   )}-${formatYearMonth(data.endDate)}`}

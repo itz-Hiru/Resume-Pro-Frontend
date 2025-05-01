@@ -24,6 +24,11 @@ import ProjectInfoForm from "../../components/Forms/ProjectInfoForm.component";
 import CertificationsForm from "../../components/Forms/CertificationsForm.component";
 import AdditionalInfoForm from "../../components/Forms/AdditionalInfoForm.component";
 import RenderResume from "../../components/ResumeTemplates/RenderResume.component";
+import {
+  captureElementAsImage,
+  dataURLtoFile,
+  fixTailwindColors,
+} from "../../utils/helper.util";
 
 const EditResume = () => {
   const { resumeId } = useParams();
@@ -143,7 +148,7 @@ const EditResume = () => {
               errors.push(`Company is required in experience ${index + 1}`);
             if (!role.trim())
               errors.push(`Role is required in experience ${index + 1}`);
-            if (!startDate || endDate)
+            if (!startDate || !endDate)
               errors.push(
                 `Start and End dates are required in experience ${index + 1}`
               );
@@ -470,9 +475,70 @@ const EditResume = () => {
   };
 
   // Upload thumbnail and resume profile image
-  const uploadResumeImage = async () => {};
+  const uploadResumeImage = async () => {
+    try {
+      setIsLoading(true);
 
-  const updateResumeDetails = async (thumbnailLink, getProfilePreviewUrl) => {};
+      fixTailwindColors(resumeRef.current);
+      const imageDataUrl = await captureElementAsImage(resumeRef.current);
+
+      // Convert base64 to file
+      const thumbnailFile = dataURLtoFile(
+        imageDataUrl,
+        `resume-${resumeId}.png`
+      );
+
+      const profileImageFile = resumeData?.profileInfo?.profileImg || null;
+
+      const formData = new FormData();
+
+      if (profileImageFile) formData.append("profileImage", profileImageFile);
+      if (thumbnailFile) formData.append("thumbnail", thumbnailFile);
+
+      const uploadResponse = await axiosInstance.put(
+        API_PATHS.RESUME.UPLOAD_IMAGES(resumeId),
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
+
+      const { thumbnailLink, profilePreviewUrl } = uploadResponse.data;
+
+      // Call the second API to update other resume data
+      await updateResumeDetails(thumbnailLink, profilePreviewUrl);
+
+      toast.success("Resume updated successfully");
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Error while uploading images: ", error);
+      toast.error("Failed to upload images");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const updateResumeDetails = async (thumbnailLink, profilePreviewUrl) => {
+    try {
+      setIsLoading(true);
+
+      const response = await axiosInstance.put(
+        API_PATHS.RESUME.UPDATE_RESUME(resumeId),
+        {
+          ...resumeData,
+          thumbnailLink: thumbnailLink || "",
+          profileInfo: {
+            ...resumeData.profileInfo,
+            profilePreviewUrl: profilePreviewUrl || "",
+          },
+        }
+      );
+    } catch (error) {
+      console.error("Error while capturing image: ", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   // Delete resume
   const handleDeleteResume = async () => {};
@@ -583,7 +649,7 @@ const EditResume = () => {
           </div>
           <div ref={resumeRef} className="h-[100vh]">
             {/* Resume Template */}
-            <RenderResume 
+            <RenderResume
               templateId={resumeData?.template?.theme || ""}
               resumeData={resumeData}
               colorPalette={resumeData?.template?.colorPalette || []}
