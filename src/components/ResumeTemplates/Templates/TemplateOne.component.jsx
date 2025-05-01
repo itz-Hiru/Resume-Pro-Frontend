@@ -12,6 +12,10 @@ import { FaLink } from "react-icons/fa6";
 import EducationInfo from "../Sections/EducationInfo.component";
 import { formatYearMonth } from "../../../utils/helper.util";
 import LanguagesInfo from "../Sections/LanguagesInfo.component";
+import WorkExperience from "../Sections/WorkExperience.component";
+import Projects from "../Sections/Projects.component";
+import SkillsInfo from "../Sections/SkillsInfo.component";
+import CertificationsInfo from "../Sections/CertificationsInfo.component";
 
 const DEFAULT_THEME = ["#EBFDFF", "#A1F4FD", "#CEFAFE", "#00B8DB", "#4A5565"];
 
@@ -142,7 +146,83 @@ const TemplateOne = ({ resumeData, colorPalette, containerWidth }) => {
             </div>
           </div>
         </div>
-        <div className="col-span-8 mr-10 pb-5"></div>
+        <div className="col-span-8 mr-10 pb-5">
+          <div>
+            <Title text="Professional Summary" color={themeColors[1]} />
+            <p className="text-sm font-medium">
+              {resumeData.profileInfo.summary}
+            </p>
+          </div>
+          <div className="mt-4">
+            <Title text="Work Experience" color={themeColors[1]} />
+            {resumeData.workExperience.map((data, index) => (
+              <WorkExperience
+                key={`work_${index}`}
+                company={data.company}
+                role={data.role}
+                duration={`${formatYearMonth(data.startDate)}-${formatYearMonth(
+                  data.endDate
+                )}`}
+                durationColor={themeColors[4]}
+                description={data.description}
+              />
+            ))}
+          </div>
+          <div className="mt-4">
+            <Title text="Projects" color={themeColors[1]} />
+            {resumeData.projects.map((data, index) => (
+              <Projects
+                key={`project_${index}`}
+                title={data.title}
+                description={data.description}
+                githubLink={data.github}
+                liveDemoUrl={data.liveDemo}
+                bgColor={themeColors[2]}
+              />
+            ))}
+          </div>
+          <div className="mt-4">
+            <Title text="Skills" color={themeColors[1]} />
+            <SkillsInfo
+              skills={resumeData.skills}
+              accentColor={themeColors[3]}
+              bgColor={themeColors[2]}
+            />
+          </div>
+          <div className="mt-4">
+            <Title text="Certifications" color={themeColors[1]} />
+            <div className="grid grid-cols-2 gap-2">
+              {resumeData.certifications.map((data, index) => (
+                <CertificationsInfo
+                  key={`certification_${index}`}
+                  title={data.title}
+                  issuer={data.issuer}
+                  year={data.year}
+                  bgColor={themeColors[2]}
+                />
+              ))}
+            </div>
+          </div>
+          {resumeData.interests.length > 0 && resumeData.interests[0] != "" && (
+            <div className="mt-4">
+              <Title text="interests" color={themeColors[1]} />
+              <div className="flex items-center flex-wrap gap-3 mt-4">
+                {resumeData.interests.map((interest, index) => {
+                  if (!interest) return null;
+                  return (
+                    <div
+                      key={`interest_${index}`}
+                      className="text-[10px] font-medium py-1 px-3 rounded-lg"
+                      style={{ backgroundColor: themeColors[2] }}
+                    >
+                      {interest}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
