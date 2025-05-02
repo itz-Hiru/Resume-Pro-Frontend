@@ -1,6 +1,6 @@
-import TEMPLATE_ONE_IMAGE from "../assets/hero-image.png";
-import TEMPLATE_TWO_IMAGE from "../assets/hero-image.png";
-import TEMPLATE_THREE_IMAGE from "../assets/hero-image.png";
+import TEMPLATE_ONE_IMAGE from "../assets/Template-01.png";
+import TEMPLATE_TWO_IMAGE from "../assets/Template-02.png";
+import TEMPLATE_THREE_IMAGE from "../assets/Template-03.png";
 
 export const resumeTemplates = [
     {
@@ -146,5 +146,5 @@ export const DUMMY_RESUME_DATA = {
         { name: "Spanish", progress: 70 },
         { name: "French", progress: 40 },
     ],
-    interests: ["Open Source Contribution", "Tech Blogging", "Cycling", "Traveling"],
+    interests: ["Open-Source Contribution", "Tech Blogging", "Cycling", "Traveling"],
 };

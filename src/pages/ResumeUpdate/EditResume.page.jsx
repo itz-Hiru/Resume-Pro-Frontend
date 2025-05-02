@@ -494,7 +494,12 @@ const EditResume = () => {
 
       const formData = new FormData();
 
-      if (profileImageFile) formData.append("profileImage", profileImageFile);
+      if (profileImageFile) {
+        formData.append("profileImage", profileImageFile);
+      } else {
+        formData.append("removeProfileImage", "true");
+      }
+
       if (thumbnailFile) formData.append("thumbnail", thumbnailFile);
 
       const uploadResponse = await axiosInstance.put(
