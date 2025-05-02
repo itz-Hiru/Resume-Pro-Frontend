@@ -17,7 +17,7 @@ const TitleInput = ({ title, setTitle }) => {
           <button className="cursor-pointer">
             <LuCheck
               className="text-[16px] text-purple-600"
-              onClick={setShowInput((prevState) => !prevState)}
+              onClick={() => setShowInput((prevState) => !prevState)}
             />
           </button>
         </>
