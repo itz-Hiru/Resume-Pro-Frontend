@@ -7,6 +7,8 @@ import SignUp from "./Authentication/SignUp.page";
 import Modal from "../components/Modals/Modal.component";
 import { UserContext } from "../context/userContext";
 import ProfileInfoCard from "../components/Cards/ProfileInfoCard.component";
+import RatingCard from "../components/Cards/RatingCard.component";
+import EmotionalCard from "../components/Cards/EmotionalCard.component";
 
 const LandingPage = () => {
   const { user } = useContext(UserContext);
@@ -24,60 +26,74 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="w-full min-h-full bg-white">
-      <div className="container mx-auto px-4 py-6">
-        {/* Header */}
-        <header className="flex justify-between items-center mb-16">
-          <div className="text-xl font-bold pointer-events-none">
+    <div className="w-full min-h-screen bg-white">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white px-4 py-4 shadow-md">
+        <div className="container mx-auto flex justify-between items-center">
+          <div className="text-lg sm:text-xl font-bold pointer-events-none">
             Resume Pro
           </div>
           {user ? (
             <ProfileInfoCard />
           ) : (
             <button
-              className="bg-red-100 text-sm font-semibold text-black px-7 py-2.5 rounded-lg hover:bg-gray-800 hover:text-white transition-colors cursor-pointer"
+              className="bg-red-100 text-xs sm:text-sm font-semibold text-black px-5 sm:px-7 py-2 sm:py-2.5 rounded-lg hover:bg-gray-800 hover:text-white transition-colors cursor-pointer"
               onClick={() => setOpenAuthModal(true)}
             >
               Login / SignUp
             </button>
           )}
-        </header>
+        </div>
+      </header>
 
-        {/* Hero Section */}
-        <div className="flex flex-col md:flex-row items-center">
-          <div className="w-full md:w-1/2 pr-4 mb-8 md:mb-0">
-            <h1 className="text-5xl font-bold mb-6 leading-tight">
-              Create Your{" "}
-              <span className="text-transparent bg-clip-text bg-[radial-gradient(circle,_#FF0000_0%,_#FF9900_100%)] bg-[length:200%_200%] animate-text-shine">
-                Dream Resume
-              </span>{" "}
-              in No Time
-            </h1>
-            <p className="text-lg text-gray-700 mb-8 font-medium">
-              Design a professional, eye-catching resume effortlessly powered by
-              smart tools that do the heavy lifting for you.
-            </p>
-            <button
-              className="bg-black text-sm font-semibold text-white px-8 py-3 rounded-lg hover:bg-gray-800 transition-colors cursor-pointer"
-              onClick={handleCTA}
-            >
-              Get Started
-            </button>
-          </div>
-          <div className="w-full md:w-1/2">
-            <img
-              src={HERO_IMAGE}
-              alt="hero image"
-              className="w-full rounded-lg"
-            />
+      <div className="pt-[80px] min-h-screen w-full bg-gradient-to-b from-[#EBECF1] to-[#FFFFFF]">
+        <div className="container mx-auto px-4 py-6">
+          {/* Hero Section */}
+          <div className="flex flex-col-reverse md:flex-row items-center justify-between relative">
+            {/* Left Section */}
+            <div className="w-full md:w-1/2 md:h-auto flex flex-col justify-center items-start md:items-start px-4 mt-14 md:mt-0">
+              <h1 className="text-3xl sm:text-4xl md:text-[44px] font-bold mb-6 leading-tight">
+                BUILD YOUR RESUME <br />
+                <span className="text-transparent bg-clip-text bg-[radial-gradient(circle,_#4070F4_0%,_#2BD67B_100%)] bg-[length:200%_200%] animate-text-shine">
+                  THE SMART WAY.
+                </span>
+              </h1>
+              <p className="max-w-md text-sm sm:text-base text-[#262B37] mb-6 font-light">
+                Easily create an{" "}
+                <span className="font-bold">out of this world</span> resume with
+                expert content that can be customized just for you!
+              </p>
+              <button
+                className="bg-[#4070F4] text-sm font-medium text-white px-8 py-3 rounded-lg border-2 border-transparent hover:border-blue-100 transition-colors cursor-pointer"
+                onClick={handleCTA}
+              >
+                Get Started
+              </button>
+            </div>
+
+            {/* Right Section */}
+            <div className="w-full md:w-1/2 relative flex justify-center items-center mt-4 md:mt-0 cursor-default">
+              <img
+                src={HERO_IMAGE}
+                alt="hero image"
+                className="w-full max-w-[400px] h-auto rounded-xl"
+              />
+              <div className="absolute top-8 -right-1 hidden sm:block">
+                <EmotionalCard />
+              </div>
+              <div className="absolute bottom-4 left-20 transform -translate-x-1/2 hidden sm:block">
+                <RatingCard />
+              </div>
+            </div>
           </div>
         </div>
+      </div>
 
-        {/* Feature Section */}
-        <div className="">
+      <div className="container mx-auto px-4 py-6">
+        <div className="mt-10">
           <Feature />
         </div>
       </div>
+
       <div className="text-sm bg-gray-50 text-secondary text-center p-5 mt-5">
         Made with <span className="text-red-500">❤</span> Enjoy your Day
       </div>
