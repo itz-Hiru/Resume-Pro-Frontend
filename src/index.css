@@ -10,6 +10,8 @@
 @layer base {
     html {
         font-family: var(--font-display);
+        scroll-behavior: smooth;
+        scroll-padding-top: 100px;
     }
 
     body {

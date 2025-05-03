@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { UserContext } from "../../context/userContext";
 import { useNavigate } from "react-router-dom";
 
-const ProfileInfoCard = () => {
+const ProfileInfoCard = ({ isScrolled }) => {
   const { user, clearUser } = useContext(UserContext);
   const navigate = useNavigate();
 
@@ -17,14 +17,22 @@ const ProfileInfoCard = () => {
         <img
           src={user.user.profileImageUrl}
           alt=""
-          className="w-11 h-11 bg-gray-300 rounded-full mr-3"
+          className={`w-11 h-11 bg-gray-300 rounded-full mr-3 ${
+            isScrolled ? "border border-gray-400" : ""
+          }`}
         />
         <div>
-          <div className="text-[15px] font-bold leading-3">
+          <div
+            className={`text-[15px] font-bold leading-3 ${
+              isScrolled ? "text-gray-800" : "text-white"
+            }`}
+          >
             {user.user.name || ""}
           </div>
           <button
-            className="text-red-600 text-sm font-medium cursor-pointer hover:underline"
+            className={`text-sm font-medium cursor-pointer hover:underline ${
+              isScrolled ? "text-red-600" : "text-red-300"
+            }`}
             onClick={handleLogout}
           >
             Logout

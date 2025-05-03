@@ -5,7 +5,7 @@ import TEMPLATE_THREE_IMAGE from "../../assets/Template-03.png";
 
 const Template = () => {
   return (
-    <section className="w-full py-16 bg-white">
+    <section className="w-full py-8 bg-white">
       <div className="flex flex-col items-center text-center px-4 mb-12">
         <h4 className="text-gray-400 text-sm font-semibold tracking-wide">
           TEMPLATES

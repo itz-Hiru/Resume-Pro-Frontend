@@ -4,7 +4,7 @@ import { GiProcessor } from "react-icons/gi";
 
 const Feature = () => {
   return (
-    <section className="w-full py-16 bg-white">
+    <section className="w-full py-8 bg-white">
       <div className="flex flex-col items-center text-center px-4 mb-12">
         <h4 className="text-gray-400 text-sm font-semibold tracking-wide">
           HOW IT WORKS
