@@ -9,6 +9,8 @@ import { UserContext } from "../context/userContext";
 import ProfileInfoCard from "../components/Cards/ProfileInfoCard.component";
 import RatingCard from "../components/Cards/RatingCard.component";
 import EmotionalCard from "../components/Cards/EmotionalCard.component";
+import { FaStar } from "react-icons/fa6";
+import Template from "../sections/Templates/Template.section";
 
 const LandingPage = () => {
   const { user } = useContext(UserContext);
@@ -68,6 +70,28 @@ const LandingPage = () => {
               >
                 Get Started
               </button>
+              <div className="flex flex-row mt-10 items-center justify-center">
+                <p className="text-[12px] text-gray-500">Excellent</p>
+                <div className="w-[12px] h-[12px] bg-[#2BD67B] flex items-center justify-center ml-2">
+                  <FaStar className="text-white text-[8px]" />
+                </div>
+                <div className="w-[12px] h-[12px] bg-[#2BD67B] flex items-center justify-center ml-0.5">
+                  <FaStar className="text-white text-[8px]" />
+                </div>
+                <div className="w-[12px] h-[12px] bg-[#2BD67B] flex items-center justify-center ml-0.5">
+                  <FaStar className="text-white text-[8px]" />
+                </div>
+                <div className="w-[12px] h-[12px] bg-[#2BD67B] flex items-center justify-center ml-0.5">
+                  <FaStar className="text-white text-[8px]" />
+                </div>
+                <div className="w-[12px] h-[12px] bg-linear-to-r from-[#2BD67B] to-gray-100 flex items-center justify-center ml-0.5">
+                  <FaStar className="text-white text-[8px]" />
+                </div>
+                <div className="flex flex-row ml-5 gap-1 items-center justify-center">
+                  <FaStar className="text-[12px] text-[#2BD67B]" />
+                  <p className="text-[12px] font-medium text-gray-600">Trustpilot</p>
+                </div>
+              </div>
             </div>
 
             {/* Right Section */}
@@ -90,7 +114,7 @@ const LandingPage = () => {
 
       <div className="container mx-auto px-4 py-6">
         <div className="mt-10">
-          <Feature />
+          <Template />
         </div>
       </div>
 
