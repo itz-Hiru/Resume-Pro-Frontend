@@ -11,6 +11,7 @@ import RatingCard from "../components/Cards/RatingCard.component";
 import EmotionalCard from "../components/Cards/EmotionalCard.component";
 import { FaStar } from "react-icons/fa6";
 import Template from "../sections/Templates/Template.section";
+import Enhancer from "../sections/Enhancer/Enhancer.section";
 
 const LandingPage = () => {
   const { user } = useContext(UserContext);
@@ -89,7 +90,9 @@ const LandingPage = () => {
                 </div>
                 <div className="flex flex-row ml-5 gap-1 items-center justify-center">
                   <FaStar className="text-[12px] text-[#2BD67B]" />
-                  <p className="text-[12px] font-medium text-gray-600">Trustpilot</p>
+                  <p className="text-[12px] font-medium text-gray-600">
+                    Trustpilot
+                  </p>
                 </div>
               </div>
             </div>
@@ -112,15 +115,23 @@ const LandingPage = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-6">
-        <div className="mt-10">
+      <section className="w-full bg-white px-4 py-6">
+        <div className="max-w-7xl mx-auto mt-10 flex flex-col items-center">
           <Template />
         </div>
-      </div>
+      </section>
 
-      <div className="container mx-auto px-4 py-6">
-        <div className="mt-10">
+      <section className="w-full bg-white px-4 py-6">
+        <div className="max-w-7xl mx-auto mt-10 flex flex-col items-center">
           <Feature />
+        </div>
+      </section>
+
+      <div className="bg-gray-200/50">
+        <div className="container mx-auto px-4 py-6">
+          <div className="mt-10">
+            <Enhancer onClick={handleCTA} />
+          </div>
         </div>
       </div>
 
