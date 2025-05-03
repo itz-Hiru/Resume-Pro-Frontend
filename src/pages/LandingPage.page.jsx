@@ -118,6 +118,12 @@ const LandingPage = () => {
         </div>
       </div>
 
+      <div className="container mx-auto px-4 py-6">
+        <div className="mt-10">
+          <Feature />
+        </div>
+      </div>
+
       <div className="text-sm bg-gray-50 text-secondary text-center p-5 mt-5">
         Made with <span className="text-red-500">❤</span> Enjoy your Day
       </div>
