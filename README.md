@@ -1,12 +1,130 @@
-# React + Vite
+# 🎯 Resume Pro – Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p align="left">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React"/>
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://img.shields.io/badge/TailwindCSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS"/>
+</p>
 
-Currently, two official plugins are available:
+<p align="center">
+  <img src="https://media.giphy.com/media/QssGEmpkyEOhBCb7e1/giphy.gif" width="150" alt="coding animation">
+</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+> 🚀 **Resume Pro** is a sleek, modern resume builder web app that allows users to create, save, customize, and export professional CVs using beautiful prebuilt templates and color palettes – built with love using React Vite & Tailwind CSS.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Features
+
+- 🔥 **Modern, Animated Landing Page** – Home, Templates, Features & About sections
+- 🔐 **Authentication** – Login securely with email & password; add profile picture optionally
+- 📄 **Dashboard** – View all created CVs and manage them with ease
+- 🧩 **Prebuilt Templates** – 3 clean, professional CV templates ready to go
+- 🎨 **8 Color Palettes** – Customize CV color scheme as you like
+- 💾 **Save CVs** – Resume your work any time from the dashboard
+- 🖨️ **Export Options** – Download as PDF, print directly from browser
+- ⚡ **Fast & Responsive** – Built with Vite and Tailwind for performance
+
+---
+
+## 🧰 Tech Stack & Libraries
+
+| Category        | Technology          |
+|-----------------|---------------------|
+| ⚛️ Frontend     | React + Vite       |
+| 🎨 Styling      | Tailwind CSS       |
+| 🔗 Routing      | react-router-dom   |
+| 📡 HTTP Client  | Axios              |
+| 📆 Date Format  | moment.js          |
+| 🔔 Toast Alerts | react-hot-toast    |
+| 🎨 Icons        | react-icons        |
+| 📄 PDF          | react-to-print     | 
+
+---
+
+## 📁 Folder Structure
+
+```
+src/
+├── assets/               # Images, logos, etc.
+├── components/           # Reusable UI components
+├── context/              # Auth and App contexts
+├── pages/                # Main page views
+├── sections/             # Landing Page Sections
+├── utils/                # axios Instance and helpers
+├── App.jsx               # App entry point
+├── index.css             # Main CSS file
+└── main.jsx              # Vite entry point
+```
+
+---
+
+## 🛠️ Getting Started
+
+1. **Clone the repo**
+   ```bash
+   git clone https://github.com/itz-Hiru/Resume-Pro-Frontend.git
+   cd Resume-Pro-Frontend
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Run the app**
+   ```bash
+   npm run dev
+   ```
+
+   > The app runs at `http://localhost:5173/`
+
+---
+
+## 📦 Build for Production
+
+```bash
+npm run build
+```
+
+---
+
+## 🔗 Related Repos
+
+- 🧠 [Resume-Pro-Backend](https://github.com/itz-Hiru/Resume-Pro-Backend) <!-- Link to your backend repo -->
+
+---
+
+## 🙌 Credits
+
+Made with 💙 by [Hirumitha Kuladewa](https://hirumitha-portfolio.vercel.app)  
+Special thanks to the open-source community and icon providers!
+
+---
+
+## 📜 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## 🤝 Contribute
+
+Contributions, issues, and feature requests are welcome!  
+Feel free to fork the project and submit a PR.
+
+---
+
+## 📬 Contact
+
+Have any questions or suggestions?
+
+- GitHub: [itz-Hiru](https://github.com/itz-Hiru)
+- Email: hirumithakuladewanew@gmail.com
+
+---
+
+> ⭐ _If you like this project, don't forget to give it a star!_
+<p align="center">
+  <img src="https://media.giphy.com/media/jRf5fsn8G6YaogAWxn/giphy.gif" width="200" alt="thank you">
+</p>
