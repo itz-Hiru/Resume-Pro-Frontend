@@ -1,14 +1,10 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import HERO_IMAGE from "../assets/hero-image.png";
 import Feature from "../sections/Features/Feature.section";
 import Login from "./Authentication/Login.page";
 import SignUp from "./Authentication/SignUp.page";
 import Modal from "../components/Modals/Modal.component";
 import { UserContext } from "../context/userContext";
-import RatingCard from "../components/Cards/RatingCard.component";
-import EmotionalCard from "../components/Cards/EmotionalCard.component";
-import { FaStar } from "react-icons/fa6";
 import Template from "../sections/Templates/Template.section";
 import Enhancer from "../sections/Enhancer/Enhancer.section";
 import Navbar from "../sections/navbar/Navbar.section";
@@ -32,14 +28,12 @@ const LandingPage = () => {
 
   return (
     <div className="w-full min-h-screen bg-white">
-      <Navbar user={user} />
+      <Navbar user={user} onClick={() => setOpenAuthModal(true)} />
 
       {/* Hero Section */}
       <div className="pt-[80px] min-h-screen w-full bg-gradient-to-b from-[#EBECF1] to-[#FFFFFF]">
         <div className="container mx-auto px-4 py-6">
-          <section className="flex flex-col-reverse md:flex-row items-center justify-between relative" id="hero">
-            <Hero onClick={handleCTA} />
-          </section>
+          <Hero onClick={handleCTA} />
         </div>
       </div>
 

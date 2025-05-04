@@ -19,17 +19,17 @@ const Template = () => {
         <img
           src={TEMPLATE_ONE_IMAGE}
           alt="Template 01"
-          className="w-full max-w-[300px] border-2 border-gray-200/50 shadow-md shadow-blue-100 rounded-lg hover:border-[#2BD67B] hover:scale-105 transition-transform duration-300 cursor-grab"
+          className="w-full max-w-[300px] border-1 border-gray-200/50 shadow-md shadow-blue-100 rounded-lg hover:border-primary hover:scale-105 transition-transform duration-300 cursor-grab"
         />
         <img
           src={TEMPLATE_TWO_IMAGE}
           alt="Template 02"
-          className="w-full max-w-[300px] border-2 border-gray-200/50 shadow-md shadow-blue-100 rounded-lg hover:border-[#2BD67B] hover:scale-105 transition-transform duration-300 cursor-grab"
+          className="w-full max-w-[300px] border-1 border-gray-200/50 shadow-md shadow-blue-100 rounded-lg hover:border-primary hover:scale-105 transition-transform duration-300 cursor-grab"
         />
         <img
           src={TEMPLATE_THREE_IMAGE}
           alt="Template 03"
-          className="w-full max-w-[300px] border-2 border-gray-200/50 shadow-md shadow-blue-100 rounded-lg hover:border-[#2BD67B] hover:scale-105 transition-transform duration-300 cursor-grab"
+          className="w-full max-w-[300px] border-1 border-gray-200/50 shadow-md shadow-blue-100 rounded-lg hover:border-primary hover:scale-105 transition-transform duration-300 cursor-grab"
         />
       </div>
     </section>

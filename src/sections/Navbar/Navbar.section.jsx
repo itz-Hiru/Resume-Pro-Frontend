@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { SiOpencv } from "react-icons/si";
 import ProfileInfoCard from "../../components/Cards/ProfileInfoCard.component";
 
-const Navbar = ({ user }) => {
+const Navbar = ({ user, onClick }) => {
   const navLinks = [
     { name: "Home", path: "#hero" },
     { name: "Templates", path: "#template" },
@@ -97,8 +97,8 @@ const Navbar = ({ user }) => {
             <ProfileInfoCard isScrolled={isScrolled} />
           ) : (
             <button
-              className="bg-red-100 text-xs sm:text-sm font-semibold text-black px-5 sm:px-7 py-2 sm:py-2.5 rounded-lg hover:bg-gray-800 hover:text-white transition-colors cursor-pointer"
-              onClick={() => setOpenAuthModal(true)}
+              className="bg-black text-xs sm:text-sm font-semibold text-white px-5 sm:px-7 py-2 sm:py-2.5 rounded-lg hover:bg-gray-900 hover:text-white transition-colors cursor-pointer"
+              onClick={onClick}
             >
               Login / SignUp
             </button>
@@ -157,11 +157,8 @@ const Navbar = ({ user }) => {
             </div>
           ) : (
             <button
-              className="bg-red-500 hover:bg-red-600 text-white px-5 py-2 text-sm rounded-md transition cursor-pointer"
-              onClick={() => {
-                setOpenAuthModal(true);
-                setIsMenuOpen(false);
-              }}
+              className="bg-gray-800 hover:bg-gray-900 text-white px-5 py-2 text-sm rounded-md transition cursor-pointer"
+              onClick={onClick}
             >
               Login / SignUp
             </button>

@@ -4,7 +4,8 @@
 @theme {
     --font-display: "Nuntino", sans-serif;
     --breakpoint-3xl: 1920px;
-    --color-primary: #9328E7;
+    --color-primary: #4070F4;
+    --color-secondary: "#2BD67B"
 }
 
 @layer base {
@@ -49,19 +50,19 @@
 }
 
 .input-box {
-    @apply w-full flex justify-between gap-3 text-sm text-black bg-gray-50/50 rounded px-4 py-3 mb-4 mt-3 border border-gray-100 outline-none focus-within:border-purple-300;
+    @apply w-full flex justify-between gap-3 text-sm text-black bg-gray-50/50 rounded px-4 py-3 mb-4 mt-3 border border-gray-100 outline-none focus-within:border-indigo-300;
 }
 
 .btn-primary {
-    @apply w-full text-sm font-medium text-white bg-black shadow-lg shadow-purple-600/5 p-[10px] rounded-md my-1 hover:bg-purple-600/15 hover:text-black cursor-pointer;
+    @apply w-full text-sm font-medium text-white bg-primary shadow-lg shadow-purple-600/5 p-[10px] rounded-md my-1 hover:bg-indigo-500 hover:text-white transition-colors duration-300 cursor-pointer;
 }
 
 .btn-small {
-    @apply flex items-center gap-2 text-[13px] font-semibold text-white bg-linear-to-r from-purple-500/85 to-purple-700 px-5 py-1.5 rounded cursor-pointer;
+    @apply flex items-center gap-2 text-[13px] font-semibold text-white bg-linear-to-r from-indigo-500/85 to-indigo-700 px-5 py-1.5 rounded cursor-pointer;
 }
 
 .btn-small-light {
-    @apply flex items-center gap-2 text-[12px] font-semibold text-purple-800 bg-purple-600/15 border border-purple-50 hover:border-purple-400 px-3 py-1.5 rounded cursor-pointer;
+    @apply flex items-center gap-2 text-[12px] font-semibold text-indigo-800 bg-indigo-600/15 border border-indigo-50 hover:border-indigo-400 px-3 py-1.5 rounded cursor-pointer;
 }
 
 .btn-small-light-delete {
@@ -73,5 +74,5 @@
 }
 
 .form-input {
-    @apply w-full text-[13px] text-black outline-none bg-white border border-slate-100 px-2.5 py-3 rounded-md mt-2 placeholder:text-gray-500 focus-within:border-purple-300;
+    @apply w-full text-[13px] text-black outline-none bg-white border border-slate-100 px-2.5 py-3 rounded-md mt-2 placeholder:text-gray-500 focus-within:border-indigo-300;
 }
