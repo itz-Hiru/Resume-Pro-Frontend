@@ -58,7 +58,7 @@ const Navbar = ({ user, onClick }) => {
           >
             <SiOpencv
               className={`text-xl transition-colors duration-300 ${
-                isScrolled ? "text-white" : "text-[#4070F4]"
+                isScrolled ? "text-white" : "text-primary"
               }`}
             />
           </div>

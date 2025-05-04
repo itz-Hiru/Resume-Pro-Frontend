@@ -1,12 +1,15 @@
 import React from "react";
-import { FaStar } from "react-icons/fa6"
-import RatingCard from "../../components/Cards/RatingCard.component";
-import EmotionalCard from "../../components/Cards/EmotionalCard.component";
+import { FaStar } from "react-icons/fa6";
 import HERO_IMAGE from "../../assets/hero-image.png";
+import EmotionalCard from "../../components/Cards/EmotionalCard.component";
+import RatingCard from "../../components/Cards/RatingCard.component";
 
-const Hero = ({onClick}) => {
+const Hero = ({ onClick }) => {
   return (
-    <section className="flex flex-col-reverse md:flex-row items-center justify-between relative" id="hero">
+    <section
+      className="flex flex-col-reverse md:flex-row items-center justify-between relative"
+      id="hero"
+    >
       {/* Left Section */}
       <div className="w-full md:w-1/2 md:h-auto flex flex-col justify-center items-start md:items-start px-4 mt-14 md:mt-0">
         <h1 className="text-3xl sm:text-4xl md:text-[44px] font-bold mb-6 leading-tight">

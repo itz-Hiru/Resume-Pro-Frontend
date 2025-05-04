@@ -7,7 +7,7 @@ const EmotionalCard = () => {
       <div className="flex flex-row justify-between items-center">
         {/* Left: Avatar + Info */}
         <div className="flex flex-row gap-4 items-center justify-center">
-          <div className="w-12 h-12 bg-[#4070F4] rounded-full flex items-center justify-center">
+          <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
             <p className="text-2xl font-semibold text-white">H</p>
           </div>
           <div className="flex flex-col items-start justify-center">

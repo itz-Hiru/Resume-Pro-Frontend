@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { useReactToPrint } from "react-to-print";
+import toast from "react-hot-toast";
 import {
   LuArrowLeft,
   LuCircleAlert,
@@ -9,28 +8,29 @@ import {
   LuSave,
   LuTrash2,
 } from "react-icons/lu";
-import toast from "react-hot-toast";
-import DashboardLayout from "../../components/Layouts/DashboardLayout.component";
-import TitleInput from "../../components/Inputs/TitleInput.component";
-import axiosInstance from "../../utils/axiosInstance.util";
-import { API_PATHS } from "../../utils/apiPath.util";
-import StepProgress from "../../components/Progress/StepProgress.component";
-import ProfileInfoForm from "../../components/Forms/ProfileInfoForm.component";
-import ContactInfoForm from "../../components/Forms/ContactInfoForm.component";
-import WorkExperienceForm from "../../components/Forms/WorkExperienceForm.component";
-import EducationInfoForm from "../../components/Forms/EducationInfoForm.component";
-import SkillsInfoForm from "../../components/Forms/SkillsInfoForm.component";
-import ProjectInfoForm from "../../components/Forms/ProjectInfoForm.component";
-import CertificationsForm from "../../components/Forms/CertificationsForm.component";
+import { useNavigate, useParams } from "react-router-dom";
+import { useReactToPrint } from "react-to-print";
 import AdditionalInfoForm from "../../components/Forms/AdditionalInfoForm.component";
+import CertificationsForm from "../../components/Forms/CertificationsForm.component";
+import ContactInfoForm from "../../components/Forms/ContactInfoForm.component";
+import EducationInfoForm from "../../components/Forms/EducationInfoForm.component";
+import ProfileInfoForm from "../../components/Forms/ProfileInfoForm.component";
+import ProjectInfoForm from "../../components/Forms/ProjectInfoForm.component";
+import SkillsInfoForm from "../../components/Forms/SkillsInfoForm.component";
+import WorkExperienceForm from "../../components/Forms/WorkExperienceForm.component";
+import TitleInput from "../../components/Inputs/TitleInput.component";
+import DashboardLayout from "../../components/Layouts/DashboardLayout.component";
+import Modal from "../../components/Modals/Modal.component";
+import ThemeSelector from "../../components/Modals/ThemeSelector.component";
+import StepProgress from "../../components/Progress/StepProgress.component";
 import RenderResume from "../../components/ResumeTemplates/RenderResume.component";
+import { API_PATHS } from "../../utils/apiPath.util";
+import axiosInstance from "../../utils/axiosInstance.util";
 import {
   captureElementAsImage,
   dataURLtoFile,
   fixTailwindColors,
 } from "../../utils/helper.util";
-import Modal from "../../components/Modals/Modal.component";
-import ThemeSelector from "../../components/Modals/ThemeSelector.component";
 
 const EditResume = () => {
   const { resumeId } = useParams();
@@ -588,7 +588,7 @@ const EditResume = () => {
   return (
     <DashboardLayout>
       <div className="mx-auto container">
-        <div className="flex items-center justify-between gap-5 bg-white rounded-lg border border-purple-100 py-3 px-4 mb-4">
+        <div className="flex items-center justify-between gap-5 bg-white rounded-lg border border-indigo-100 py-3 px-4 mb-4">
           <TitleInput
             title={resumeData.title}
             setTitle={(value) =>

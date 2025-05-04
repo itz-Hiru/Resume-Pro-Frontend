@@ -1,7 +1,7 @@
 import React from "react";
+import { LuPlus, LuTrash2 } from "react-icons/lu";
 import Input from "../Inputs/Input.component";
 import RatingInput from "../Inputs/RatingInput.component";
-import { LuPlus, LuTrash2 } from "react-icons/lu";
 
 const AdditionalInfoForm = ({
   languages,
@@ -12,13 +12,18 @@ const AdditionalInfoForm = ({
 }) => {
   return (
     <div className="px-5 pt-5">
-      <h2 className="text-lg font-semibold text-gray-900">Additional Information</h2>
+      <h2 className="text-lg font-semibold text-gray-900">
+        Additional Information
+      </h2>
       {/* Languages */}
       <div className="mt-6">
         <h3 className="text-sm font-semibold text-gray-700 mb-2">Languages</h3>
         <div className="flex flex-col gap-4">
           {languages.map((language, index) => (
-            <div key={index} className="border border-gray-200/80 p-4 rounded-lg relative">
+            <div
+              key={index}
+              className="border border-gray-200/80 p-4 rounded-lg relative"
+            >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
                 <Input
                   label="Language"
@@ -29,7 +34,9 @@ const AdditionalInfoForm = ({
                   }
                 />
                 <div className="mt-1">
-                  <label className="text-[13px] font-medium text-slate-600 mb-7 block">Proficiency</label>
+                  <label className="text-[13px] font-medium text-slate-600 mb-7 block">
+                    Proficiency
+                  </label>
                   <RatingInput
                     value={language.progress || 0}
                     onChange={(value) =>

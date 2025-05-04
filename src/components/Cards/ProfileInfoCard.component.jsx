@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { UserContext } from "../../context/userContext";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../context/userContext";
 
 const ProfileInfoCard = ({ isScrolled }) => {
   const { user, clearUser } = useContext(UserContext);
@@ -24,14 +24,14 @@ const ProfileInfoCard = ({ isScrolled }) => {
         <div>
           <div
             className={`text-[15px] font-bold leading-3 ${
-              isScrolled ? "text-gray-800" : "text-white"
+              isScrolled ? "text-gray-900" : "text-white"
             }`}
           >
             {user.user.name || ""}
           </div>
           <button
             className={`text-sm font-medium cursor-pointer hover:underline ${
-              isScrolled ? "text-red-600" : "text-red-300"
+              isScrolled ? "text-red-600" : "text-red-400"
             }`}
             onClick={handleLogout}
           >

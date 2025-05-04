@@ -1,6 +1,6 @@
 import React from "react";
-import Input from "../Inputs/Input.component";
 import { LuPlus, LuTrash2 } from "react-icons/lu";
+import Input from "../Inputs/Input.component";
 
 const CertificationsForm = ({
   certificationsInfo,
@@ -10,10 +10,15 @@ const CertificationsForm = ({
 }) => {
   return (
     <div className="px-5 pt-5">
-      <h2 className="text-lg font-semibold text-gray-900">Certifications Details</h2>
+      <h2 className="text-lg font-semibold text-gray-900">
+        Certifications Details
+      </h2>
       <div className="mt-4 flex flex-col gap-4 mb-3">
         {certificationsInfo.map((certification, index) => (
-          <div key={index} className="border border-gray-200/80 p-4 rounded-lg relative">
+          <div
+            key={index}
+            className="border border-gray-200/80 p-4 rounded-lg relative"
+          >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <Input
                 label="Certification Title"

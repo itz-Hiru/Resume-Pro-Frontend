@@ -1,15 +1,15 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Feature from "../sections/Features/Feature.section";
-import Login from "./Authentication/Login.page";
-import SignUp from "./Authentication/SignUp.page";
 import Modal from "../components/Modals/Modal.component";
 import { UserContext } from "../context/userContext";
-import Template from "../sections/Templates/Template.section";
 import Enhancer from "../sections/Enhancer/Enhancer.section";
-import Navbar from "../sections/navbar/Navbar.section";
+import Feature from "../sections/Features/Feature.section";
 import Footer from "../sections/Footer/Footer.section";
 import Hero from "../sections/Hero/Hero.section";
+import Navbar from "../sections/navbar/Navbar.section";
+import Template from "../sections/Templates/Template.section";
+import Login from "./Authentication/Login.page";
+import SignUp from "./Authentication/SignUp.page";
 
 const LandingPage = () => {
   const { user } = useContext(UserContext);
@@ -38,14 +38,14 @@ const LandingPage = () => {
       </div>
 
       {/* Templates Section */}
-      <section className="w-full bg-white px-4" id="template">
+      <section className="w-full px-4" id="template">
         <div className="max-w-7xl mx-auto flex flex-col items-center">
           <Template />
         </div>
       </section>
 
       {/* Feature Section */}
-      <section className="w-full bg-white px-4 py-6" id="features">
+      <section className="w-full px-4 py-6" id="features">
         <div className="max-w-7xl mx-auto flex flex-col items-center">
           <Feature />
         </div>
@@ -61,7 +61,7 @@ const LandingPage = () => {
       </section>
 
       {/* Footer Section */}
-      <section className="w-full bg-white">
+      <section className="w-full">
         <Footer />
       </section>
 

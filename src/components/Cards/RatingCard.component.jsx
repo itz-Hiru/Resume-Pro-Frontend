@@ -1,6 +1,6 @@
 import React from "react";
-import USER_IMAGE from "../../assets/rating-user.png";
 import { FaStar } from "react-icons/fa6";
+import USER_IMAGE from "../../assets/rating-user.png";
 
 const RatingCard = () => {
   return (
@@ -11,7 +11,9 @@ const RatingCard = () => {
         </div>
       </div>
       <div className="mt-3">
-        <p className="font-semibold text-[14px]">"ResumePro has got everything I need."</p>
+        <p className="font-semibold text-[14px]">
+          "ResumePro has got everything I need."
+        </p>
         <div className="flex flex-row gap-1 items-center mt-5">
           <FaStar className="text-amber-400 text-[14px]" />
           <FaStar className="text-amber-400 text-[14px]" />

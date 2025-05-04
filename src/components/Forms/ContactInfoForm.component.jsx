@@ -4,7 +4,9 @@ import Input from "../Inputs/Input.component";
 const ContactInfoForm = ({ contactInfo, updateSection }) => {
   return (
     <div className="px-5 pt-5">
-      <h2 className="text-lg font-semibold text-gray-900">Contact Information</h2>
+      <h2 className="text-lg font-semibold text-gray-900">
+        Contact Information
+      </h2>
       <div className="mt-4 grid grid-cols-1 md:grid-cols-2">
         <div className="col-span-2">
           <Input

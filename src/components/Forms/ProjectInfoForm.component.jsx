@@ -1,6 +1,6 @@
 import React from "react";
-import Input from "../Inputs/Input.component";
 import { LuPlus, LuTrash2 } from "react-icons/lu";
+import Input from "../Inputs/Input.component";
 
 const ProjectInfoForm = ({
   projectInfo,
@@ -13,7 +13,10 @@ const ProjectInfoForm = ({
       <h2 className="text-lg font-semibold text-gray-900">Your Projects</h2>
       <div className="mt-4 flex flex-col gap-4 mb-3">
         {projectInfo.map((project, index) => (
-          <div key={index} className="border border-gray-200/80 p-4 rounded-lg relative">
+          <div
+            key={index}
+            className="border border-gray-200/80 p-4 rounded-lg relative"
+          >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="col-span-2">
                 <Input
@@ -27,7 +30,9 @@ const ProjectInfoForm = ({
                 />
               </div>
               <div className="col-span-2">
-                <label className="text-xs font-medium text-slate-800">Description</label>
+                <label className="text-xs font-medium text-slate-800">
+                  Description
+                </label>
                 <textarea
                   placeholder="Enter short description about project"
                   className="form-input"

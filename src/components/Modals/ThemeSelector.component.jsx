@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
+import { LuCircleCheckBig } from "react-icons/lu";
 import {
   DUMMY_RESUME_DATA,
   resumeTemplates,
   themeColorPalette,
 } from "../../utils/data.util";
-import { LuCircleCheckBig } from "react-icons/lu";
-import Tabs from "../Tabs/Tabs.component";
 import TemplateCard from "../Cards/TemplateCard.component";
 import RenderResume from "../ResumeTemplates/RenderResume.component";
+import Tabs from "../Tabs/Tabs.component";
 
 const TAB_DATA = [{ label: "Templates" }, { label: "Color Palettes" }];
 
@@ -112,8 +112,8 @@ export default ThemeSelector;
 const ColorPalette = ({ colors, isSelected, onSelect }) => {
   return (
     <div
-      className={`h-28 bg-purple-50 flex rounded-lg overflow-hidden border-2 ${
-        isSelected ? "border-purple-500" : "border-none"
+      className={`h-28 bg-indigo-50 flex rounded-lg overflow-hidden border-2 ${
+        isSelected ? "border-indigo-500" : "border-none"
       }`}
     >
       {colors.map((color, index) => (

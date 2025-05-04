@@ -1,7 +1,7 @@
 import React from "react";
 import TemplateOne from "./Templates/TemplateOne.component";
-import TemplateTwo from "./Templates/TemplateTwo.component";
 import TemplateThree from "./Templates/TemplateThree.component";
+import TemplateTwo from "./Templates/TemplateTwo.component";
 
 const RenderResume = ({
   templateId,

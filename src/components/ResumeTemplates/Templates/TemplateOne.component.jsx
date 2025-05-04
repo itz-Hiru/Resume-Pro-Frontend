@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { FaLink } from "react-icons/fa6";
 import {
   LuGithub,
   LuMail,
@@ -7,15 +8,14 @@ import {
   LuUser,
 } from "react-icons/lu";
 import { RiLinkedinLine } from "react-icons/ri";
-import ContactInfo from "../Sections/ContactInfo.component";
-import { FaLink } from "react-icons/fa6";
-import EducationInfo from "../Sections/EducationInfo.component";
 import { formatYearMonth } from "../../../utils/helper.util";
+import CertificationsInfo from "../Sections/CertificationsInfo.component";
+import ContactInfo from "../Sections/ContactInfo.component";
+import EducationInfo from "../Sections/EducationInfo.component";
 import LanguagesInfo from "../Sections/LanguagesInfo.component";
-import WorkExperience from "../Sections/WorkExperience.component";
 import Projects from "../Sections/Projects.component";
 import SkillsInfo from "../Sections/SkillsInfo.component";
-import CertificationsInfo from "../Sections/CertificationsInfo.component";
+import WorkExperience from "../Sections/WorkExperience.component";
 
 const DEFAULT_THEME = ["#EBFDFF", "#A1F4FD", "#CEFAFE", "#00B8DB", "#4A5565"];
 

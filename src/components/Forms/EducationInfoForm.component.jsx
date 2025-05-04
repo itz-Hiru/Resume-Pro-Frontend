@@ -1,6 +1,6 @@
 import React from "react";
-import Input from "../Inputs/Input.component";
 import { LuPlus, LuTrash2 } from "react-icons/lu";
+import Input from "../Inputs/Input.component";
 
 const EducationInfoForm = ({
   educationInfo,

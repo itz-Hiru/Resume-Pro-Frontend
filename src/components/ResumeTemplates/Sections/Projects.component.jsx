@@ -2,7 +2,14 @@ import React from "react";
 import { LuExternalLink, LuGithub } from "react-icons/lu";
 import ActionLink from "../../LiveLinks/ActionLink.component";
 
-const Projects = ({ title, description, githubLink, liveDemoUrl, bgColor, isPreview }) => {
+const Projects = ({
+  title,
+  description,
+  githubLink,
+  liveDemoUrl,
+  bgColor,
+  isPreview,
+}) => {
   return (
     <div className="mb-5">
       <h3

@@ -1,6 +1,6 @@
 import React from "react";
+import ENHANCER_IMAGE_MOBILE from "../../assets/enhancer-mobile.png";
 import ENHANCER_IMAGE from "../../assets/enhancer.png";
-import ENHANCER_IMAGE_MOBILE  from "../../assets/enhancer-mobile.png"
 
 const Enhancer = ({ onClick }) => {
   return (
@@ -19,7 +19,7 @@ const Enhancer = ({ onClick }) => {
         </p>
         <button
           type="button"
-          className="bg-[#2BD67B] px-6 py-3 text-sm sm:text-base rounded-lg text-white hover:bg-[#4070F4] transition-colors duration-500 cursor-pointer"
+          className="bg-[#2BD67B] px-6 py-3 text-sm sm:text-base rounded-lg text-white hover:bg-primary transition-colors duration-500 cursor-pointer"
           onClick={onClick}
         >
           Get started now

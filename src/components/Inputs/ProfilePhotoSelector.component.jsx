@@ -34,12 +34,12 @@ const ProfilePhotoSelector = ({ image, setImage, preview, setPreview }) => {
   };
   return (
     <div className="flex justify-center mb-6">
-      <input 
+      <input
         type="file"
         accept="image/*"
         ref={inputRef}
-        onChange={handleImageChange} 
-        className="hidden" 
+        onChange={handleImageChange}
+        className="hidden"
       />
       {!image ? (
         <div className="w-20 h-20 flex items-center justify-center bg-pink-50 rounded-full relative cursor-pointer">
@@ -52,12 +52,12 @@ const ProfilePhotoSelector = ({ image, setImage, preview, setPreview }) => {
             <LuUpload />
           </button>
         </div>
-      ):(
+      ) : (
         <div className="relative">
-          <img 
-            src={preview || previewUrl} 
+          <img
+            src={preview || previewUrl}
             alt="profile photo"
-            className="w-20 h-20 rounded-full object-cover border-5 border-red-500" 
+            className="w-20 h-20 rounded-full object-cover border-5 border-red-500"
           />
           <button
             type="button"
